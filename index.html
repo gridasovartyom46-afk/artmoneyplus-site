@@ -1,368 +1,52 @@
 <!DOCTYPE html>
-<html lang="ru" class="dark scroll-smooth">
+<html lang="ru" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArtMoney+ — Умный учет финансов и личных целей</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#e6fffa',
-                            100: '#b2f5ea',
-                            400: '#38b2ac',
-                            500: '#00e676', // фирменный акцент ArtMoney
-                            600: '#00c853',
-                            700: '#009624',
-                            900: '#004d40',
-                        },
-                        darkbg: '#050505',
-                        darkcard: '#121212',
-                        darkborder: '#2a2a2e'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #050505;
-            color: #f5f5f5;
-        }
-        .glow-effect {
-            background: radial-gradient(circle at 50% 0%, rgba(0, 230, 118, 0.15), transparent 70%);
-        }
-        .glass-card {
-            background: rgba(18, 18, 18, 0.7);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .glass-card-hover:hover {
-            border-color: rgba(0, 230, 118, 0.4);
-            box-shadow: 0 0 25px rgba(0, 230, 118, 0.15);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b0a">
+  <title>ArtMoney+ — учет финансов и личных целей</title>
+  <style>
+    :root{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark;--bg:#080b0a;--surface:#111714;--text:#f4f7f5;--muted:#a3ada7;--line:#26312a;--accent:#00d875;--header:rgba(8,11,10,.88);--shadow:0 20px 70px #0005}
+    [data-theme="light"]{color-scheme:light;--bg:#f4f8f5;--surface:#fff;--text:#17211a;--muted:#5e6d63;--line:#dce7df;--accent:#008c4b;--header:rgba(244,248,245,.9);--shadow:0 20px 70px #203b2a1c}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:86px}body{margin:0;background:var(--bg);color:var(--text);transition:background .3s,color .3s}a{color:inherit;text-decoration:none}.wrap{width:min(1100px,calc(100% - 36px));margin:auto}.header{position:sticky;top:0;z-index:5;background:var(--header);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:1px}.logo{width:44px;height:44px;object-fit:cover;border-radius:50%;background:var(--accent);box-shadow:0 0 22px #00d87533}.links{display:flex;align-items:center;gap:24px;color:var(--muted);font-size:14px}.actions{display:flex;gap:10px;align-items:center}.button{border:0;border-radius:999px;padding:12px 19px;background:var(--accent);color:#061109;font-weight:750;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}.toggle{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:20px;cursor:pointer}.hero{padding:90px 0 76px;background:radial-gradient(ellipse at 75% 5%,color-mix(in srgb,var(--accent) 15%,transparent),transparent 42%)}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}.tag{color:var(--accent);font-weight:700;font-size:13px}.hero h1{font-size:clamp(38px,6vw,66px);line-height:1.04;letter-spacing:-2px;margin:18px 0}.hero h1 span{color:var(--accent)}p{color:var(--muted);line-height:1.7}.hero p{font-size:18px;max-width:620px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:27px 0}.secondary{border:1px solid var(--line);background:var(--surface);color:var(--text)}.stats{display:flex;gap:36px;border-top:1px solid var(--line);padding-top:22px;margin-top:30px}.stats b{display:block;font-size:21px}.stats small{color:var(--muted)}.preview{height:510px;max-width:340px;width:100%;margin:auto;border:7px solid var(--surface);border-radius:34px;overflow:hidden;box-shadow:var(--shadow);background:#000}.preview iframe,.demo iframe{width:100%;height:100%;border:0}.section{padding:72px 0;border-top:1px solid var(--line)}.center{text-align:center;max-width:680px;margin:0 auto 36px}.center h2,.section h2{font-size:clamp(28px,4vw,40px);margin:0 0 12px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{border:1px solid var(--line);background:var(--surface);border-radius:22px;padding:24px;transition:transform .2s,border-color .2s}.card:hover{transform:translateY(-3px);border-color:var(--accent)}.card .icon{font-size:25px}.card h3{margin:14px 0 8px}.demo{height:720px;width:min(460px,100%);margin:0 auto;border:7px solid var(--surface);border-radius:30px;overflow:hidden;background:#000;box-shadow:var(--shadow)}.calc{max-width:760px;margin:auto;border:1px solid var(--line);background:var(--surface);border-radius:24px;padding:30px}.calc label{display:flex;justify-content:space-between;margin:20px 0 8px}.calc input{width:100%;accent-color:var(--accent)}.results{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:25px}.result{padding:20px;border-radius:16px;background:color-mix(in srgb,var(--accent) 9%,var(--surface));text-align:center}.result strong{display:block;font-size:24px;margin-top:7px}.faq details{border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:18px;margin:10px 0}.faq summary{font-weight:700;cursor:pointer}.faq p{margin-bottom:0}footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted)}.foot{display:flex;justify-content:space-between;gap:18px;align-items:center}.foot-brand{display:flex;gap:10px;align-items:center;color:var(--text);font-weight:700}
+    @media(max-width:760px){.links{display:none}.hero{padding:56px 0}.hero-grid{grid-template-columns:1fr;gap:32px}.preview{height:500px}.cards{grid-template-columns:1fr}.stats{gap:17px;justify-content:space-between}.stats small{font-size:11px}.demo{height:680px}.foot{flex-direction:column;text-align:center}.nav{height:66px}.brand{font-size:14px}.logo{width:38px;height:38px}}
+  </style>
 </head>
-<body class="bg-darkbg text-gray-100 antialiased selection:bg-brand-500 selection:text-black">
-
-    <!-- ФОНОВЫЕ ЭФФЕКТЫ -->
-    <div class="fixed inset-0 glow-effect pointer-events-none z-0"></div>
-
-    <!-- НАВИГАЦИЯ -->
-    <header class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Логотип -->
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-600 to-brand-400 flex items-center justify-center text-black font-extrabold text-xl shadow-lg shadow-brand-500/20">
-                        A
-                    </div>
-                    <span class="text-xl font-bold tracking-wider">ARTMONEY<span class="text-brand-500">+</span></span>
-                </div>
-
-                <!-- Меню -->
-                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
-                    <a href="#features" class="hover:text-brand-500 transition-colors">Возможности</a>
-                    <a href="#demo" class="hover:text-brand-500 transition-colors">Демо-версия</a>
-                    <a href="#calculator" class="hover:text-brand-500 transition-colors">Калькулятор</a>
-                    <a href="#faq" class="hover:text-brand-500 transition-colors">FAQ</a>
-                </nav>
-
-                <!-- Кнопки действий -->
-                <div class="flex items-center gap-4">
-                    <a href="#demo" class="px-5 py-2.5 rounded-full bg-brand-500 text-black font-semibold text-sm hover:bg-brand-400 active:scale-95 transition-all shadow-md shadow-brand-500/20">
-                        Запустить в веб
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <main class="relative z-10 pt-20">
-
-        <!-- HERO СЕКЦИЯ -->
-        <section class="relative py-20 lg:py-32 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-500 text-xs font-semibold mb-6">
-                            <i data-lucide="sparkles" class="w-4 h-4"></i>
-                            <span>Версия 2.0 уже доступна</span>
-                        </div>
-                        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
-                            Полный контроль над финансами в <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-emerald-300">вашем ритме</span>
-                        </h1>
-                        <p class="text-lg text-gray-400 mb-8 max-w-xl">
-                            Удобное отслеживание доходов и расходов, управление долгами, достижение накопительных целей и гибкая кастомизация интерфейса. Все данные остаются на вашем устройстве.
-                        </p>
-                        
-                        <div class="flex flex-col sm:flex-row gap-4 mb-10">
-                            <a href="ArtMoney.html" download="ArtMoney.html" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-brand-500 text-black font-bold text-base hover:bg-brand-400 active:scale-95 transition-all shadow-xl shadow-brand-500/25">
-                                <i data-lucide="download" class="w-5 h-5"></i>
-                                Скачать веб-приложение
-                            </a>
-                            <a href="#demo" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full glass-card text-white font-medium text-base hover:bg-white/10 transition-all border border-white/10">
-                                <i data-lucide="play-circle" class="w-5 h-5 text-brand-500"></i>
-                                Попробовать демо
-                            </a>
-                        </div>
-
-                        <!-- Преимущества в числах -->
-                        <div class="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
-                            <div>
-                                <div class="text-2xl font-bold text-white">100%</div>
-                                <div class="text-xs text-gray-400">Конфиденциально</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold text-brand-500">0 ₽</div>
-                                <div class="text-xs text-gray-400">Без скрытых подписок</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold text-white">AMOLED</div>
-                                <div class="text-xs text-gray-400">Энергосбережение</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Интерактивная рамка / превью -->
-                    <div class="relative flex justify-center">
-                        <div class="w-full max-w-[360px] h-[640px] rounded-[40px] border-4 border-gray-800 bg-black shadow-2xl shadow-brand-500/10 overflow-hidden relative group">
-                            <!-- Имитация экрана приложения -->
-                            <iframe src="ArtMoney.html" class="w-full h-full border-0"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ОСОБЕННОСТИ И ВОЗМОЖНОСТИ -->
-        <section id="features" class="py-20 border-t border-white/5 bg-black/40">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <h2 class="text-3xl font-bold text-white mb-4">Всё для удобного учета личного бюджета</h2>
-                    <p class="text-gray-400">Создано для тех, кто ц��нит скорость, минимализм и точный контроль средств без лишней рекламы.</p>
-                </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Карточка 1 -->
-                    <div class="glass-card rounded-3xl p-8 glass-card-hover transition-all">
-                        <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center mb-6">
-                            <i data-lucide="pie-chart" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-3">Наглядная аналитика</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Интерактивные диаграммы и детальное распределение по категориям позволят сразу увидеть, куда уходят основные средства.
-                        </p>
-                    </div>
-
-                    <!-- Карточка 2 -->
-                    <div class="glass-card rounded-3xl p-8 glass-card-hover transition-all">
-                        <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center mb-6">
-                            <i data-lucide="target" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-3">Копилка и цели</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Ставьте финансовые ориентиры, пополняйте баланс накоплений и следите за прогрессом достижения ваших мечт.
-                        </p>
-                    </div>
-
-                    <!-- Карточка 3 -->
-                    <div class="glass-card rounded-3xl p-8 glass-card-hover transition-all">
-                        <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center mb-6">
-                            <i data-lucide="repeat" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-3">Учет долгов</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Фиксируйте, кто должен вам и кому должны вы. Хронология и распределение по людям в пару касаний.
-                        </p>
-                    </div>
-
-                    <!-- Карточка 4 -->
-                    <div class="glass-card rounded-3xl p-8 glass-card-hover transition-all">
-                        <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center mb-6">
-                            <i data-lucide="palette" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-3">Персонализация</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Кастомные цвета, AMOLED темный режим, эффект жидкого или матового стекла, смена шрифтов и собственных фонов.
-                        </p>
-                    </div>
-
-                    <!-- Карточка 5 -->
-                    <div class="glass-card rounded-3xl p-8 glass-card-hover transition-all">
-                        <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center mb-6">
-                            <i data-lucide="file-spreadsheet" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-3">Экспорт в Excel</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Выгружайте полную историю транзакций, долгов и целей в полноценные `.xlsx` таблицы в любой момент.
-                        </p>
-                    </div>
-
-                    <!-- Карточка 6 -->
-                    <div class="glass-card rounded-3xl p-8 glass-card-hover transition-all">
-                        <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center mb-6">
-                            <i data-lucide="calculator" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-3">Встроенные утилиты</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Удобный калькулятор прямо в интерфейсе и интегрированный календарь для планирования предстоящих трат.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ИНТЕРАКТИВНОЕ ДЕМО ПРИЛОЖЕНИЯ -->
-        <section id="demo" class="py-20 border-t border-white/5">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-2xl mx-auto mb-12">
-                    <h2 class="text-3xl font-bold text-white mb-3">Протестируйте ArtMoney+ прямо сейчас</h2>
-                    <p class="text-gray-400">Полнофункциональный веб-сервис прямо внутри сайта. Все действия сохраняются локально на вашем устройстве.</p>
-                </div>
-
-                <div class="flex justify-center">
-                    <div class="w-full max-w-[460px] h-[780px] rounded-[36px] border-8 border-gray-900 bg-black shadow-2xl shadow-brand-500/20 overflow-hidden relative">
-                        <iframe src="ArtMoney.html" class="w-full h-full border-0"></iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР ВЫГОДЫ -->
-        <section id="calculator" class="py-20 border-t border-white/5 bg-black/40">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="glass-card rounded-3xl p-8 md:p-12">
-                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-4 text-center">Сколько вы сэкономите за год?</h2>
-                    <p class="text-gray-400 text-center mb-8">Контроль трат помогает сохранить до 15-20% бюджета, исключая спонтанные покупки.</p>
-                    
-                    <div class="space-y-6 mb-8">
-                        <div>
-                            <div class="flex justify-between text-sm font-medium mb-2">
-                                <span class="text-gray-300">Ваш ежемесячный доход</span>
-                                <span class="text-brand-500 font-bold" id="incomeVal">100 000 ₽</span>
-                            </div>
-                            <input type="range" min="20000" max="500000" step="5000" value="100000" id="incomeInput" class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-brand-500">
-                        </div>
-
-                        <div>
-                            <div class="flex justify-between text-sm font-medium mb-2">
-                                <span class="text-gray-300">Процент оптимизации трат</span>
-                                <span class="text-brand-500 font-bold" id="percentVal">15%</span>
-                            </div>
-                            <input type="range" min="5" max="40" step="1" value="15" id="percentInput" class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-brand-500">
-                        </div>
-                    </div>
-
-                    <div class="grid sm:grid-cols-2 gap-4 p-6 rounded-2xl bg-white/5 border border-white/10 text-center">
-                        <div>
-                            <div class="text-sm text-gray-400 mb-1">Экономия в месяц</div>
-                            <div class="text-2xl font-bold text-white" id="monthSavings">15 000 ₽</div>
-                        </div>
-                        <div>
-                            <div class="text-sm text-gray-400 mb-1">Накопления за 1 год</div>
-                            <div class="text-3xl font-extrabold text-brand-500" id="yearSavings">180 000 ₽</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ СЕКЦИЯ -->
-        <section id="faq" class="py-20 border-t border-white/5">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-white mb-12 text-center">Часто задаваемые вопросы</h2>
-                
-                <div class="space-y-4">
-                    <details class="glass-card rounded-2xl p-6 group [&_summary::-webkit-details-marker]:hidden">
-                        <summary class="flex justify-between items-center font-semibold text-white cursor-pointer">
-                            <span>Где хранятся мои данные?</span>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform"></i>
-                        </summary>
-                        <p class="mt-4 text-sm text-gray-400 leading-relaxed">
-                            Все финансовые записи, категории и цели хранятся исключительно локально в памяти вашего браузера или устройства (LocalStorage). Данные не передаются на сторонние сервера.
-                        </p>
-                    </details>
-
-                    <details class="glass-card rounded-2xl p-6 group [&_summary::-webkit-details-marker]:hidden">
-                        <summary class="flex justify-between items-center font-semibold text-white cursor-pointer">
-                            <span>Приложение бесплатное?</span>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform"></i>
-                        </summary>
-                        <p class="mt-4 text-sm text-gray-400 leading-relaxed">
-                            Да, ArtMoney+ полностью бесплатно и не содержит каких-либо платных подписок или скрытых транзакций.
-                        </p>
-                    </details>
-
-                    <details class="glass-card rounded-2xl p-6 group [&_summary::-webkit-details-marker]:hidden">
-                        <summary class="flex justify-between items-center font-semibold text-white cursor-pointer">
-                            <span>Как перенести данные на другой телефон?</span>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform"></i>
-                        </summary>
-                        <p class="mt-4 text-sm text-gray-400 leading-relaxed">
-                            Вы можете использовать функцию экспорта в Excel в настройках веб-приложения для сохранения резервной копии всех отчетов.
-                        </p>
-                    </details>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="py-12 border-t border-white/10 text-sm text-gray-500">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-brand-500 text-black flex items-center justify-center font-bold">A</div>
-                    <span class="text-white font-semibold">ArtMoney+</span>
-                    <span>© 2026</span>
-                </div>
-                <div>
-                    Разработано для быстрого и приватного учета трат
-                </div>
-            </div>
-        </footer>
-
-    </main>
-
-    <script>
-        // Инициализация иконки Lucide
-        lucide.createIcons();
-
-        // Калькулятор выгоды
-        const incomeInput = document.getElementById('incomeInput');
-        const percentInput = document.getElementById('percentInput');
-        const incomeVal = document.getElementById('incomeVal');
-        const percentVal = document.getElementById('percentVal');
-        const monthSavings = document.getElementById('monthSavings');
-        const yearSavings = document.getElementById('yearSavings');
-
-        function updateCalc() {
-            const inc = parseInt(incomeInput.value);
-            const perc = parseInt(percentInput.value);
-
-            incomeVal.textContent = inc.toLocaleString('ru-RU') + ' ₽';
-            percentVal.textContent = perc + '%';
-
-            const monthly = Math.round(inc * (perc / 100));
-            const yearly = monthly * 12;
-
-            monthSavings.textContent = monthly.toLocaleString('ru-RU') + ' ₽';
-            yearSavings.textContent = yearly.toLocaleString('ru-RU') + ' ₽';
-        }
-
-        incomeInput.addEventListener('input', updateCalc);
-        percentInput.addEventListener('input', updateCalc);
-    </script>
+<body>
+  <header class="header"><div class="wrap nav">
+    <a class="brand" href="#top" aria-label="ArtMoney+ — главная"><img class="logo" src="logo.png" alt="Логотип ArtMoney+" onerror="this.style.display='none'"><span>ARTMONEY<span style="color:var(--accent)">+</span></span></a>
+    <nav class="links" aria-label="Основная навигация"><a href="#features">Возможности</a><a href="#demo">Демо</a><a href="#calculator">Калькулятор</a><a href="#faq">FAQ</a></nav>
+    <div class="actions"><a class="button" href="#demo">Открыть демо</a><button class="toggle" id="themeToggle" type="button" aria-label="Включить дневную тему" title="Сменить день и ночь">☀️</button></div>
+  </div></header>
+  <main id="top">
+    <section class="hero"><div class="wrap hero-grid"><div>
+      <div class="tag">✦ Учет финансов в вашем ритме</div>
+      <h1>Полный контроль над финансами в <span>вашем ритме</span></h1>
+      <p>Доходы и расходы, долги, накопительные цели и аналитика. Записи хранятся в браузере на вашем устройстве.</p>
+      <div class="hero-actions"><a class="button" href="ArtMoney.html" download="ArtMoney.html">↓ Скачать приложение</a><a class="button secondary" href="#demo">Попробовать демо</a></div>
+      <div class="stats"><div><b>Локально</b><small>данные на устройстве</small></div><div><b>0 ₽</b><small>без подписки</small></div><div><b>AMOLED</b><small>темная тема</small></div></div>
+    </div><div class="preview"><iframe src="ArtMoney.html" title="Предпросмотр ArtMoney+"></iframe></div></div></section>
+    <section class="section" id="features"><div class="wrap"><div class="center"><h2>Все для личного бюджета</h2><p>Минималистичный набор инструментов для повседневного учета и финансовых планов.</p></div><div class="cards">
+      <article class="card"><div class="icon">📊</div><h3>Наглядная аналитика</h3><p>Смотрите расходы по категориям и отслеживайте денежный поток.</p></article>
+      <article class="card"><div class="icon">🎯</div><h3>Цели и накопления</h3><p>Задавайте цель, пополняйте копилку и следите за прогрессом.</p></article>
+      <article class="card"><div class="icon">🔁</div><h3>Учет долгов</h3><p>Записывайте, кому одолжили и у кого заняли.</p></article>
+      <article class="card"><div class="icon">🎨</div><h3>Персонализация</h3><p>Настраивайте внешний вид, темы и цвета приложения.</p></article>
+      <article class="card"><div class="icon">📑</div><h3>Экспорт в Excel</h3><p>Сохраняйте историю и отчеты в таблицу.</p></article>
+      <article class="card"><div class="icon">🧮</div><h3>Калькулятор и календарь</h3><p>Полезные инструменты для расчетов и планирования.</p></article>
+    </div></div></section>
+    <section class="section" id="demo"><div class="wrap"><div class="center"><h2>Попробуйте ArtMoney+ прямо сейчас</h2><p>Демо работает прямо на этой странице. Данные сохраняются локально в браузере.</p></div><div class="demo"><iframe src="ArtMoney.html" title="Демо-приложение ArtMoney+"></iframe></div></div></section>
+    <section class="section" id="calculator"><div class="wrap"><div class="calc"><div class="center"><h2>Калькулятор накоплений</h2><p>Приблизительный расчет на основе дохода и выбранного процента оптимизации.</p></div><label for="income"><span>Ежемесячный доход</span><b id="incomeOut">100 000 ₽</b></label><input id="income" type="range" min="20000" max="500000" step="5000" value="100000"><label for="percent"><span>Процент оптимизации</span><b id="percentOut">15%</b></label><input id="percent" type="range" min="5" max="40" value="15"><div class="results"><div class="result">Экономия в месяц<strong id="monthOut">15 000 ₽</strong></div><div class="result">За год<strong id="yearOut">180 000 ₽</strong></div></div></div></div></section>
+    <section class="section faq" id="faq"><div class="wrap"><div class="center"><h2>Частые вопросы</h2></div><details><summary>Где хранятся мои данные?</summary><p>Данные приложения сохраняются в LocalStorage браузера на вашем устройстве. Очистка данных браузера может удалить записи, поэтому регулярно экспортируйте резервную копию.</p></details><details><summary>Приложение бесплатное?</summary><p>Да, приложение бесплатно и не требует подписки.</p></details><details><summary>Как перенести данные на другой телефон?</summary><p>Используйте экспорт данных в настройках приложения, если он дос��упен в вашей версии.</p></details></div></section>
+  </main>
+  <footer><div class="wrap foot"><a class="foot-brand" href="#top"><img class="logo" src="logo.png" alt="" onerror="this.style.display='none'">ArtMoney+</a><span>© 2026 · Учет финансов и личных целей</span></div></footer>
+  <script>
+    const root=document.documentElement,themeButton=document.getElementById('themeToggle');
+    function applyTheme(theme){root.dataset.theme=theme;localStorage.setItem('artmoney-site-theme',theme);const light=theme==='light';themeButton.textContent=light?'🌙':'☀️';themeButton.setAttribute('aria-label',light?'Включить ночную тему':'Включить дневную тему');document.querySelector('meta[name="theme-color"]').content=light?'#f4f8f5':'#080b0a'}
+    themeButton.addEventListener('click',()=>applyTheme(root.dataset.theme==='dark'?'light':'dark'));
+    try{applyTheme(localStorage.getItem('artmoney-site-theme')||'dark')}catch{applyTheme('dark')}
+    const income=document.getElementById('income'),percent=document.getElementById('percent');
+    function updateCalc(){const i=Number(income.value),p=Number(percent.value),month=Math.round(i*p/100),money=n=>n.toLocaleString('ru-RU')+' ₽';document.getElementById('incomeOut').textContent=money(i);document.getElementById('percentOut').textContent=p+'%';document.getElementById('monthOut').textContent=money(month);document.getElementById('yearOut').textContent=money(month*12)}
+    income.addEventListener('input',updateCalc);percent.addEventListener('input',updateCalc);updateCalc();
+  </script>
 </body>
 </html>
